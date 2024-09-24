@@ -14,5 +14,5 @@ Two clients (under NAT) run the command
 php client.php {server_ip_address} 11111
 ```
 After two clients are connected to server,
-server sends the other peer's IP to each peer and punching happens.
-then server's job is done.
+server sends the other peer's IP to each peer and punching happens. 
+Server's job is done.

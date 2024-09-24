@@ -45,7 +45,7 @@ while (true) {
         socket_sendto($sock, $response, 100, 0, $remote_ip, $remote_port);
         echo "Send $response to $remote_ip:$remote_port\n";
         if ($n>=2) {
-            echo "server's job is done.\n";
+            echo "Server's job is done.\n";
             break;
         }
     } else {

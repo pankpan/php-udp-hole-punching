@@ -45,11 +45,11 @@ while (true) {
         socket_sendto($sock, $response, 100, 0, $remote_ip, $remote_port);
         echo "Send $response to $remote_ip:$remote_port\n";
         if ($n>=2) {
-            echo "Server's job is done.\n";
+            echo "\nServer's job is done.\n";
             break;
         }
     } else {
-        socket_sendto($sock, "Server-ACK", 100, 0, $remote_ip, $remote_port);
+        socket_sendto($sock, "Server-Echo", 100, 0, $remote_ip, $remote_port);
     }
 }
 socket_close($sock);

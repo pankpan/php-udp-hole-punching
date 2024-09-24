@@ -42,7 +42,10 @@ while (true) {
         else
             $response=$remote_ip_ports[$key][0]['ip'].':'.$remote_ip_ports[$key][0]['port'];
         socket_sendto($sock, $response, 100, 0, $remote_ip, $remote_port);
-        if ($n>=2) break; // server job is done
+        if ($n>=2) {
+            echo "server's job is done.\n";
+            break;
+        }
     } else {
         socket_sendto($sock, "Server-ACK", 100, 0, $remote_ip, $remote_port);
     }

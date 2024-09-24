@@ -9,6 +9,7 @@ php server.php 11111
 This command will run the server on port 11111
 
 ## Client
+Two clients (under NAT) run the command
 ```
 php client.php {server_ip_address} 11111
 ```

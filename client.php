@@ -14,7 +14,7 @@ if (!($sock = socket_create(AF_INET, SOCK_DGRAM, 0))) {
 $id=rand(1000,9999); // random id to identify client
 $key='hello';
 $msg=$key.'-'.$id;
-echo "This node id: $id\n";
+echo "This client id: $id\n\n";
 while (true) {
     echo "Send $msg to $server:$port\n";
     if (!socket_sendto($sock, $msg , strlen($msg) , 0 , $server , $port)) {

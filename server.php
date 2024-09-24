@@ -36,6 +36,7 @@ while (true) {
     }
     if (count($remote_ip_ports[$key])>=2) {
         $n++;
+        echo "2 clients connected\n";
         print_r($remote_ip_ports);
         if ($remote_ip==$remote_ip_ports[$key][0]['ip'])
             $response=$remote_ip_ports[$key][1]['ip'].':'.$remote_ip_ports[$key][1]['port'];

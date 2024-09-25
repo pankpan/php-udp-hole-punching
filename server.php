@@ -8,6 +8,7 @@ if (!$argv[1]) {
 $port=$argv[1];
 $remote_ip_ports=[];
 $n=0;
+$counter=0;
 
 if (!($sock = socket_create(AF_INET, SOCK_DGRAM, 0))) {
     $errorcode = socket_last_error();
@@ -28,12 +29,12 @@ echo "Client side command: php client.php $ip $port\n\n";
 
 while (true) {
     echo "Waiting for data ...\n";
-    $r = socket_recvfrom($sock, $buf, 512, 0, $remote_ip, $remote_port);
-    $key=trim(strtok($buf,' ')); // hello my id is 8888, hello is key
+    $r = socket_recvfrom($sock, $msg, 100, 0, $remote_ip, $remote_port);
+    $key=trim(strtok($msg,' ')); // hello my id is 8888, hello is key
     $remote_ip_port=$remote_ip.':'.$remote_port;
-    echo "Got: $buf from $remote_ip_port\n";
+    echo "Got: $msg from $remote_ip_port\n";
     if (is_null($remote_ip_ports[$key])) $remote_ip_ports[$key]=[];
-    if (count($remote_ip_ports[$key])>=2) {
+    if (count($remote_ip_ports[$key])>=2 && $counter>20) {
         $n++;
         echo "2 clients connected\n";
         print_r($remote_ip_ports);
@@ -48,6 +49,7 @@ while (true) {
             break;
         }
     } else {
+        $counter++;
         echo "Send Server-Echo to $remote_ip:$remote_port\n";
         socket_sendto($sock, "Server-Echo", 100, 0, $remote_ip, $remote_port);
     }

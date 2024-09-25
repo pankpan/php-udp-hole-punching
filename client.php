@@ -14,7 +14,7 @@ if (!($sock = socket_create(AF_INET, SOCK_DGRAM, 0))) {
 $id=rand(1000,9999); // random id to identify client
 $key='hello';
 $msg="$key my id is $id";
-echo "This client id: $id\n\n";
+echo date("Y-m-d H:i:s")." This client id: $id\n\n";
 $n=0;
 while (true) {
     $n++;
@@ -42,6 +42,7 @@ while (true) {
         $port=$arr[1]; // change to peer's port
         $msg='peer-'.$id; // change send data to peer-id
     }
-    sleep(1);
+    //sleep(1);
+    usleep(500000);
 }
 ?>

@@ -25,6 +25,7 @@ while (true) {
         die("Could not send data: [$errorcode] $errormsg \n");
     }
     if (substr($msg,0,4)=='peer') { // resend
+        sleep(1);
         echo "Send [$n] $msg to $server:$port\n";
         socket_sendto($sock, $msg , strlen($msg) , 0 , $server , $port);
     }

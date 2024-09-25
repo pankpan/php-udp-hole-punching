@@ -29,7 +29,7 @@ echo "Client side command: php client.php $ip $port\n\n";
 while (true) {
     echo "Waiting for data ...\n";
     $r = socket_recvfrom($sock, $buf, 512, 0, $remote_ip, $remote_port);
-    $key=trim(strtok($buf,'-'));
+    $key=trim(strtok($buf,' ')); // hello my id is 8888, hello is key
     $remote_ip_port=$remote_ip.':'.$remote_port;
     echo "Got: $buf from $remote_ip_port\n";
     if (is_null($remote_ip_ports[$key])) $remote_ip_ports[$key]=[];

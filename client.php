@@ -12,7 +12,8 @@ if (!($sock = socket_create(AF_INET, SOCK_DGRAM, 0))) {
     die("Couldn't create socket: [$errorcode] $errormsg \n");
 }
 $id=rand(1000,9999); // random id to identify client
-$msg="hello my id is $id";
+$key='hello';
+$msg="$key my id is $id";
 echo "This client id: $id\n\n";
 $n=0;
 while (true) {

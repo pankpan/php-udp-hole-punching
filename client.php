@@ -18,7 +18,7 @@ echo "This client id: $id\n\n";
 $n=0;
 while (true) {
     $n++;
-    echo "Send [$i] $msg to $server:$port\n";
+    echo "Send [$n] $msg to $server:$port\n";
     if (!socket_sendto($sock, $msg , strlen($msg) , 0 , $server , $port)) {
         $errorcode = socket_last_error();
         $errormsg = socket_strerror($errorcode);

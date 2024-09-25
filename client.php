@@ -15,8 +15,10 @@ $id=rand(1000,9999); // random id to identify client
 $key='hello';
 $msg=$key.'-'.$id;
 echo "This client id: $id\n\n";
+$n=0;
 while (true) {
-    echo "Send $msg to $server:$port\n";
+    $n++;
+    echo "Send [$i] $msg to $server:$port\n";
     if (!socket_sendto($sock, $msg , strlen($msg) , 0 , $server , $port)) {
         $errorcode = socket_last_error();
         $errormsg = socket_strerror($errorcode);

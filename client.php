@@ -42,7 +42,6 @@ while (true) {
         $port=$arr[1]; // change to peer's port
         $msg='peer-'.$id; // change send data to peer-id
     }
-    //sleep(1);
-    usleep(500000);
+    sleep(1);
 }
 ?>

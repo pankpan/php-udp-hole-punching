@@ -44,7 +44,7 @@ while (true) {
         else
             $response=$remote_ip_ports[$key][0]['ip'].':'.$remote_ip_ports[$key][0]['port'];
         socket_sendto($sock, $response, 100, 0, $remote_ip, $remote_port);
-        echo "Send $response to $remote_ip:$remote_port\n";
+        echo "Send Peer-Info $response to $remote_ip:$remote_port\n";
         if ($n>=2) {
             echo "\nServer's job is done.\n";
             break;

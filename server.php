@@ -8,7 +8,7 @@ if (!$argv[1]) {
 $port=$argv[1];
 $remote_ip_ports=[];
 $n=0;
-$counter=0;
+$in_counter=0;
 
 if (!($sock = socket_create(AF_INET, SOCK_DGRAM, 0))) {
     $errorcode = socket_last_error();
@@ -32,10 +32,10 @@ while (true) {
     $r = socket_recvfrom($sock, $msg, 100, 0, $remote_ip, $remote_port);
     $key=trim(strtok($msg,' ')); // hello my id is 8888, hello is key
     $remote_ip_port=$remote_ip.':'.$remote_port;
-    $counter++;
-    echo "Got [$counter] $msg from $remote_ip_port\n";
+    $in_counter++;
+    echo "Got [$in_counter] $msg from $remote_ip_port\n";
     if (is_null($remote_ip_ports[$key])) $remote_ip_ports[$key]=[];
-    if (count($remote_ip_ports[$key])>=2 && $counter>20) {
+    if (count($remote_ip_ports[$key])>=2) {
         $n++;
         echo "2 clients connected\n";
         print_r($remote_ip_ports);

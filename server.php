@@ -32,7 +32,8 @@ while (true) {
     $r = socket_recvfrom($sock, $msg, 100, 0, $remote_ip, $remote_port);
     $key=trim(strtok($msg,' ')); // hello my id is 8888, hello is key
     $remote_ip_port=$remote_ip.':'.$remote_port;
-    echo "Got: $msg from $remote_ip_port\n";
+    $counter++;
+    echo "Got [$counter] $msg from $remote_ip_port\n";
     if (is_null($remote_ip_ports[$key])) $remote_ip_ports[$key]=[];
     if (count($remote_ip_ports[$key])>=2 && $counter>20) {
         $n++;
@@ -49,7 +50,6 @@ while (true) {
             break;
         }
     } else {
-        $counter++;
         echo "Send Server-Echo to $remote_ip:$remote_port\n";
         socket_sendto($sock, "Server-Echo", 100, 0, $remote_ip, $remote_port);
     }

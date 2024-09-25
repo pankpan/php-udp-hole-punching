@@ -26,7 +26,7 @@ while (true) {
     if (socket_recv($sock, $reply, 100, MSG_WAITALL) === FALSE) {
         $errorcode = socket_last_error();
         $errormsg = socket_strerror($errorcode);
-        die("Could not receive data: [$errorcode] $errormsg \n");
+        die("Could not receive data: [$errorcode] $errormsg\n");
     }
     echo "Got: $reply\n";
     if (strstr($reply,':')) { // got peer ip:port

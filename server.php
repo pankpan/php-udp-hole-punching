@@ -48,7 +48,7 @@ while (true) {
             break;
         }
     } else {
-        echo "Send Server-Echo to $remote_ip:$remote_port\n"
+        echo "Send Server-Echo to $remote_ip:$remote_port\n";
         socket_sendto($sock, "Server-Echo", 100, 0, $remote_ip, $remote_port);
     }
     if (count($remote_ip_ports[$key])<2 && $remote_ip!=$remote_ip_ports[$key][0]['ip']) {

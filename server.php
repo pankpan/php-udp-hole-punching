@@ -22,7 +22,7 @@ if (!socket_bind($sock, "0.0.0.0", $argv[1])) {
     die("Could not bind socket : [$errorcode] $errormsg \n");
 }
 echo "Socket bind OK\n";
-$ip=trim(file_get_contents('http://icanhazip.com'));
+$ip=trim(file_get_contents('http://ipv4.icanhazip.com'));
 echo "Client side command: php client.php $ip $port\n\n";
 while (true) {
     echo "Waiting for data ... \n";

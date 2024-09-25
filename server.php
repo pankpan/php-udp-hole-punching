@@ -22,18 +22,17 @@ if (!socket_bind($sock, "0.0.0.0", $argv[1])) {
     die("Could not bind socket : [$errorcode] $errormsg \n");
 }
 echo "Socket bind OK\n";
+
 $ip=trim(file_get_contents('http://ipv4.icanhazip.com'));
 echo "Client side command: php client.php $ip $port\n\n";
+
 while (true) {
-    echo "Waiting for data ... \n";
+    echo "Waiting for data ...\n";
     $r = socket_recvfrom($sock, $buf, 512, 0, $remote_ip, $remote_port);
     $key=trim(strtok($buf,'-'));
     $remote_ip_port=$remote_ip.':'.$remote_port;
     echo "Got: $buf from $remote_ip_port\n";
     if (is_null($remote_ip_ports[$key])) $remote_ip_ports[$key]=[];
-    if (count($remote_ip_ports[$key])<2 && $remote_ip!=$remote_ip_ports[$key][0]['ip']) {
-        $remote_ip_ports[$key][]=['ip'=>$remote_ip,'port'=>$remote_port];
-    }
     if (count($remote_ip_ports[$key])>=2) {
         $n++;
         echo "2 clients connected\n";
@@ -49,7 +48,11 @@ while (true) {
             break;
         }
     } else {
+        echo "Send Server-Echo to $remote_ip:$remote_port\n"
         socket_sendto($sock, "Server-Echo", 100, 0, $remote_ip, $remote_port);
+    }
+    if (count($remote_ip_ports[$key])<2 && $remote_ip!=$remote_ip_ports[$key][0]['ip']) {
+        $remote_ip_ports[$key][]=['ip'=>$remote_ip,'port'=>$remote_port];
     }
 }
 socket_close($sock);

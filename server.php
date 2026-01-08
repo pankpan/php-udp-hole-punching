@@ -1,7 +1,10 @@
 <?php
 // php server.php {port}
 if (!$argv[1]) {
-    echo "php $argv[0] {port}\n";
+    echo "php $argv[0] {port}
+
+eg.
+php $argv[0] 51111\n";
     exit;
 }
 
